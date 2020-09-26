@@ -1,17 +1,27 @@
-import styled from '@emotion/styled'
-import { rem } from 'polished'
+import styled from '@emotion/styled';
+import { rem } from 'polished';
+import { Flex, Box } from 'reflexbox';
+import Navigation from './Navigation';
+import Link from 'next/link';
 
-const Header = () => {
-    return ( 
+const Header = ({navigation}) => {
+    return (
         <HeaderStyled>
-            <div className='container'>
-                <div className='logo'>
-                    <img src='/images/logo.svg' alt='Sites logo'/>
-                    <span className='logo-text'>Next Movies</span>
-                </div>
-            </div>            
+            <Flex justifyContent="space-between" alignItems="center">
+                <Box variant='container'>
+                    <div className='logo'>
+                        <Link href='/'>
+                            <a>
+                                <img src='/images/logo.svg' alt='Sites logo' />
+                                <span className='logo-text'>Next Movies</span>
+                            </a>
+                        </Link>
+                    </div>
+                    <Navigation navigation={navigation}/>
+                </Box>
+            </Flex>
         </HeaderStyled>
-     );
+    );
 }
 
 const HeaderStyled = styled.header`
@@ -30,5 +40,5 @@ const HeaderStyled = styled.header`
         margin-left: 20px;
     }
 `
- 
+
 export default Header;
