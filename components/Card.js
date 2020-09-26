@@ -1,4 +1,5 @@
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
+import Link from 'next/link';
 
 const Card = (props) => {
     const { API_URL } = process.env;
@@ -14,6 +15,10 @@ const Card = (props) => {
             </div>
 
             <p dangerouslySetInnerHTML={{__html: props.movie.description}}/>
+
+            <Link href='/movies/[id]' as={`/movies/${props.movie.id}`}>
+                <a>More about this movies</a>
+            </Link>
         </CardStyled>
       );
 }
