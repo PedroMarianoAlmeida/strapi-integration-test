@@ -5,15 +5,19 @@ import theme from './../theme/theme'
 import getConfig from 'next/config';
 import fetch from 'isomorphic-unfetch';
 
+import SEO from './../next-seo.config';
+import { DefaultSeo } from 'next-seo';
+
 function MyApp({ Component, pageProps, navigation }) {
   
   return <>
-    <ThemeProvider theme={theme}>
-      <Header navigation={navigation} />
-      <GlobalStyles />
-      <Component {...pageProps} />
-    </ThemeProvider>
-  </>
+            <DefaultSeo {...SEO} />
+            <ThemeProvider theme={theme}>
+              <Header navigation={navigation} />
+              <GlobalStyles />
+              <Component {...pageProps} />
+            </ThemeProvider>
+          </>
 }
 
 const { publicRuntimeConfig } = getConfig()
